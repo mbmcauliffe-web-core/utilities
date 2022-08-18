@@ -1,7 +1,7 @@
 {
   "name": "webapplogger",
   "version": "1.0.0",
-  "description": "",
+  "description": "Express Middleware to log basic information on each request to a CSV File and separately log stderr.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

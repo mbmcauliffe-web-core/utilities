@@ -51,6 +51,7 @@ async function logRequest(req, res, next){
 	logStream.write(logOutput);
 
 	next();
+	
 }
 
 module.exports = logRequest;
