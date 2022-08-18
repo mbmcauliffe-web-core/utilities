@@ -1,5 +1,5 @@
 {
-  "name": "webapplogger",
+  "name": "web-app-logger",
   "version": "1.0.0",
   "description": "Express Middleware to log basic information on each request to a CSV File and separately log stderr.",
   "main": "index.js",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mbmcauliffe/WebAppLogger.git"
+    "url": "git+https://github.com/mbmcauliffe/web-app-logger.git"
   },
   "author": "Michael B McAuliffe",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/mbmcauliffe/WebAppLogger/issues"
+    "url": "https://github.com/mbmcauliffe/web-app-logger/issues"
   },
-  "homepage": "https://github.com/mbmcauliffe/WebAppLogger#readme",
+  "homepage": "https://github.com/mbmcauliffe/web-app-logger#readme",
   "dependencies": {
     "fs": "latest"
   }

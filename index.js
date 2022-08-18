@@ -19,7 +19,7 @@ const errorPath = "./logs/errors/" + "Error-Log_" + new Date().toISOString().rep
 const errorStream = fs.createWriteStream(logPath, {flags:'a'});
 
 // Log unhandled errors to the Error Stream
-new Console(null, errorStream);
+new console.Console(null, errorStream);
 
 async function logRequest(req, res, next){
 
