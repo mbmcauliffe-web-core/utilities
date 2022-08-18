@@ -5,21 +5,9 @@ if (!fs.existsSync("./logs")){
     fs.mkdirSync("./logs");
 }
 
-// Create an Errors Directory if one does not already exist
-if (!fs.existsSync("./logs/errors")){
-    fs.mkdirSync("./logs/errors");
-}
-
 // Create a Write Stream to a new CSV file for Requests
 const logPath = "./logs/" + "Request-Log_" + new Date().toISOString().replace(/-/g, ".").replace(/:/g, ".") + ".csv";
 const logStream = fs.createWriteStream(logPath, {flags:'a'});
-
-// Create a Write Stream to a new TXT file for Errors
-const errorPath = "./logs/errors/" + "Error-Log_" + new Date().toISOString().replace(/-/g, ".").replace(/:/g, ".") + ".csv";
-const errorStream = fs.createWriteStream(logPath, {flags:'a'});
-
-// Log unhandled errors to the Error Stream
-new console.Console(null, errorStream);
 
 async function logRequest(req, res, next){
 
