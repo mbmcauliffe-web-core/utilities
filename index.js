@@ -1,4 +1,5 @@
 const fs = require("fs");
+const proxy = require('express-http-proxy');
 
 // Create a Logs Directory if one does not already exist
 if (!fs.existsSync("./logs")){
@@ -42,4 +43,18 @@ async function logRequest(req, res, next){
 	
 }
 
-module.exports = logRequest;
+async function utilProxy(address, route) {
+
+	proxy(address,{
+		proxyReqPathResolver: function (req) {
+			return route
+		},
+		proxyErrorHandler: function(err, res, next) {
+			console.log(err);
+			return res.status(503).render("unavailable.ejs");
+		  }
+	})
+}
+
+exports.logRequest = logRequest;
+exports.utilProxy = utilProxy;
