@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/mbmcauliffe-web-core/utilities#readme",
   "dependencies": {
-    "fs": "latest",
-    "express-http-proxy": "latest"
+    "cross-fetch": "^3.1.5",
+    "express-http-proxy": "latest",
+    "fs": "latest"
   }
 }
