@@ -52,7 +52,7 @@ async function proxyRequest ( req, res, next, target ) {
 		}
 	}
 
-	if (Object.keys(req.body).length != 0) {
+	if (req.method != "GET") {
 		requestPayload.body = JSON.stringify(req.body);
 	}
 
