@@ -54,6 +54,7 @@ async function proxyRequest ( req, res, next, target ) {
 
 	if (req.method != "GET") {
 		requestPayload.body = JSON.stringify(req.body);
+		requestPayload.headers["content-type"] = "application/json";
 	}
 
 	response = await fetch( target + req.path, requestPayload).then(function(response){return response}, function(error){console.log(error)});
