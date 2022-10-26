@@ -1,5 +1,4 @@
 const fs = require("fs");
-const fetch = require("cross-fetch");
 
 // Create a Logs Directory if one does not already exist
 if (!fs.existsSync("./logs")){
@@ -43,36 +42,4 @@ async function logRequest(req, res, next){
 	
 }
 
-async function proxyRequest ( req, res, next, target ) {
-
-	console.log(target);
-
-	var requestPayload={
-		method: req.method,
-		headers: {}
-	}
-
-	if ( req.headers.authorization != null ) {
-		requestPayload.headers.authorization = req.headers.authorization;
-	}
-
-	if (req.method != "GET") {
-		requestPayload.body = JSON.stringify(req.body);
-		requestPayload.headers["content-type"] = "application/json";
-	}
-
-	response = await fetch( target, requestPayload).then(function(response){return response}, function(error){console.log(error)});
-
-	console.log(response.headers);
-
-	if ( response.headers.authorization ) {
-		res.set("Access-Control-Expose-Headers", "authorization");
-		res.set("authorization", response.headers.authorization);
-	}
-
-	return response
-
-}
-
-exports.logRequest = logRequest;
-exports.proxyRequest = proxyRequest;
+module.exports = logRequest;
