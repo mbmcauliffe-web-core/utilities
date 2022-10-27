@@ -31,11 +31,11 @@ async function logRequest(req, res, next){
 	}
 
 	// Print Log Data to the Console
-	const consoleOutput = log.ip + " | " + log.url + " | " + log.method + " | " + log.body;
+	const consoleOutput = log.ip + " | " + log.method + " | " + log.url + " | " + log.body;
 	console.log(consoleOutput);
 
 	// Add a timestamp and write Log Data to the Log Stream
-	const logOutput = new Date().toISOString() + "," + log.ip + "," + log.url + "," + log.method + "," + log.body.split(",").join(" | ") + "\n";
+	const logOutput = new Date().toISOString() + "," + log.ip + "," + log.method + "," + log.url + "," + log.body.split(",").join(" | ") + "\n";
 	logStream.write(logOutput);
 
 	next();
