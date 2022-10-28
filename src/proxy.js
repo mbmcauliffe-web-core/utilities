@@ -21,9 +21,6 @@ function proxy ( serviceIP ) {
 
 		response = await fetch( serviceIP + req.originalUrl, requestPayload ).then(function(response){return response}, function(error){console.log(error)});
 
-		console.log(requestPayload);
-		console.log(response);
-
 		res.status(response.status);
 
 		res.set("Access-Control-Expose-Headers", "client-authorization");
