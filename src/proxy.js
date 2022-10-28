@@ -1,4 +1,4 @@
-const fetch = require("cross-fetch");
+const fetch = require("node-fetch");
 
 function proxy ( serviceIP ) {
 
@@ -20,6 +20,9 @@ function proxy ( serviceIP ) {
 		}
 
 		response = await fetch( serviceIP + req.originalUrl, requestPayload ).then(function(response){return response}, function(error){console.log(error)});
+
+		console.log(requestPayload);
+		console.log(response);
 
 		res.status(response.status);
 
