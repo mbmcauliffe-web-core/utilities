@@ -7,7 +7,8 @@ function proxy ( serviceIP ) {
 
 		var requestPayload={
 			method: req.method,
-			headers: {}
+			headers: {},
+			redirect: "manual"
 		}
 
 		if ( req.headers.authorization != null ) {
@@ -20,6 +21,10 @@ function proxy ( serviceIP ) {
 		}
 
 		response = await fetch( serviceIP + req.originalUrl, requestPayload ).then(function(response){return response}, function(error){console.log(error)});
+
+		if ( response.status === 302 ) {
+			return res.redirect(response.headers.get("location").split(response.url)[1]);
+		}
 
 		res.status(response.status);
 
