@@ -29,7 +29,7 @@ function sendMail (apiKey, secretKey, senderAddress, senderName, recipientAddres
 
   request
       .then((result) => {
-          console.log(result.body)
+          //console.log(result.body)
       })
       .catch((err) => {
           console.log(err.statusCode)
