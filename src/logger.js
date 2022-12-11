@@ -9,7 +9,12 @@ if (!fs.existsSync("./logs")){
 const logPath = "./logs/" + "Request-Log_" + new Date().toISOString().replace(/-/g, ".").replace(/:/g, ".") + ".csv";
 const logStream = fs.createWriteStream(logPath, {flags:'a'});
 
-async function logRequest(req, res, next){
+async function logRequest(req, res, next=()=>{}, time=""){
+
+	//Standardize the length of the time String
+	if ( time !== "" ) {
+		time = String(time).padStart(5, '0');
+	}
 
 	// Replace the value of Body Objects with the Key "password" prior to logging 
 	bodyString = '';
@@ -31,7 +36,7 @@ async function logRequest(req, res, next){
 	}
 
 	// Print Log Data to the Console
-	const consoleOutput = log.ip + " | " + log.method + " | " + log.url + " | " + log.body;
+	const consoleOutput = log.ip + " | ToS (ms)" + time + " | " + log.method + " | " + log.url + " | " + log.body;
 	console.log(consoleOutput);
 
 	// Add a timestamp and write Log Data to the Log Stream
