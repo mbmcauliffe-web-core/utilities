@@ -32,7 +32,7 @@ function sendMail (apiKey, secretKey, senderAddress, senderName, recipientAddres
           //console.log(result.body)
       })
       .catch((err) => {
-          console.log(err.statusCode)
+          console.log(err)
       })
 
 }
