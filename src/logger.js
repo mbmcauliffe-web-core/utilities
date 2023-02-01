@@ -42,7 +42,7 @@ function logRequest (req, res, time=""){
 		method: req.method,
 		body: removePasswords( req.body ),
 		ip: req.connection.remoteAddress,
-		time: "ResTime: " + Math.floor( time * 1000 ) / 1000 + "ms"
+		time: Math.floor( time * 1000 ) / 1000 + "ms"
 	}
 
 	const consoleOutput = log.ip + " | " + log.time + " | " + log.method + " | " + log.url + " | " + log.body;
