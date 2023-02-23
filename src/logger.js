@@ -38,14 +38,14 @@ function removePasswords ( reqBody ) {
 function logRequest (req, res, time=""){
 
 	const log = {
-		url: req.url,
+		originalUrl: req.originalUrl,
 		method: req.method,
 		body: removePasswords( req.body ),
 		ip: req.connection.remoteAddress,
 		time: Math.floor( time * 1000 ) / 1000 + "ms"
 	}
 
-	const consoleOutput = log.ip + " | " + log.time + " | " + log.method + " | " + log.url + " | " + log.body;
+	const consoleOutput = log.ip + " | " + log.time + " | " + log.method + " | " + log.originalUrl + " | " + log.body;
 	console.log(consoleOutput);
 
 	const logOutput = new Date().toISOString() + "," + log.ip + "," + log.time + "," + log.method + "," + log.url + "," + log.body.split(",").join(" | ") + "\n";
