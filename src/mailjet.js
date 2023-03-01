@@ -1,4 +1,4 @@
-function sendMail (apiKey, secretKey, senderAddress, senderName, recipientAddress, subject, htmlBody) {
+function sendMail ( apiKey, secretKey, senderAddress, senderName, recipientAddress, subject, htmlBody, attachments=[] ) {
 
   const Mailjet = require('node-mailjet');
   const mailjet = Mailjet.apiConnect(
@@ -22,7 +22,8 @@ function sendMail (apiKey, secretKey, senderAddress, senderName, recipientAddres
                   }
                 ],
                 Subject: subject,
-                HTMLPart: htmlBody
+                HTMLPart: htmlBody,
+                Attachments: attachments
               }
             ]
           })
