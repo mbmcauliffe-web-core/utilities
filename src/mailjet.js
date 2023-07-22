@@ -32,7 +32,7 @@ async function sendMail ( apiKey, secretKey, senderAddress, senderName, recipien
     }
   }
 
-  console.log( "\n\nSending Email:\n" + messageObject.toString() + "\n" );
+  console.log( "\n\nSending Email:\n" + JSON.stringify( messageObject ) + "\n" );
 
   const request = await mailjet
     .post('send', { version: 'v3.1' })
