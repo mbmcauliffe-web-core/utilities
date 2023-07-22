@@ -25,7 +25,7 @@ function sendMail ( apiKey, secretKey, senderAddress, senderName, recipientAddre
   if ( carbonCopy ) {
     if ( carbonCopy != recipientAddress ) {
 
-      messageObject.Cc:{
+      messageObject.Cc = {
         Email: carbonCopy
       }
 
