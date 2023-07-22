@@ -23,11 +23,13 @@ function sendMail ( apiKey, secretKey, senderAddress, senderName, recipientAddre
   };
 
   if ( carbonCopy ) {
+    if ( carbonCopy != recipientAddress ) {
 
-    messageObject.Cc:{
-      Email: carbonCopy
+      messageObject.Cc:{
+        Email: carbonCopy
+      }
+
     }
-
   }
 
   const request = mailjet
