@@ -1,7 +1,7 @@
-function sendMail ( apiKey, secretKey, senderAddress, senderName, recipientAddress, subject, htmlBody, attachments=[], carbonCopy ) {
+async function sendMail ( apiKey, secretKey, senderAddress, senderName, recipientAddress, subject, htmlBody, attachments=[], carbonCopy ) {
 
   const Mailjet = require('node-mailjet');
-  const mailjet = Mailjet.apiConnect(
+  const mailjet = await Mailjet.apiConnect(
       apiKey,
       secretKey,
   );
@@ -32,19 +32,13 @@ function sendMail ( apiKey, secretKey, senderAddress, senderName, recipientAddre
     }
   }
 
-  const request = mailjet
+  console.log( "\n\nSending Email:\n" + messageObject + "\n" );
+
+  const request = await mailjet
     .post('send', { version: 'v3.1' })
     .request({
       Messages: [messageObject]
     });
-
-  request
-      .then((result) => {
-          //console.log(result.body)
-      })
-      .catch((err) => {
-          console.log(err)
-      })
 
 }
 
