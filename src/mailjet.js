@@ -25,9 +25,9 @@ async function sendMail ( apiKey, secretKey, senderAddress, senderName, recipien
   if ( carbonCopy ) {
     if ( carbonCopy != recipientAddress ) {
 
-      messageObject.Cc = {
+      messageObject.Cc = [{
         Email: carbonCopy
-      }
+      }];
 
     }
   }
